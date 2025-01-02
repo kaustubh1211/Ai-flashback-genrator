@@ -42,45 +42,45 @@ export default function Quiz() {
       };
       
   return (
-    <div className="p-6 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4 text-center">AI Flashcards Generator</h1>
+    <div className="p-6 max-w-5xl mx-auto">
+      <h1 className="text-3xl font-semibold mb-6 text-center text-gray-800 animate-wiggle">
+  AI Flashcards Generator
+</h1>
 
-    <div className="text-center flex justify-center mt-11">
-      <div style={{ display: "flex" }}>
-        <input
-          type="text"
-          placeholder="Search FlashCard Topic "
-          onChange={handleChangeSearch}
-          value={search}
-          className="border px-4 py-2 rounded-lg w-80"
-        />
-        <button
-          onClick={handleClick}
-          style={{ marginLeft: "20px" }}
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-        >
-          Search
-        </button>
-      </div>
-    </div>
+<div className="flex justify-center mt-8">
+  <div className="flex flex-col md:flex-row gap-4 items-center">
+    <input
+      type="text"
+      placeholder="Enter Flashcard Topic"
+      onChange={handleChangeSearch}
+      value={search}
+      className="border border-gray-300 px-4 py-2 rounded-md shadow-sm w-80 focus:ring focus:ring-blue-200 focus:outline-none"
+    />
+    <button
+      onClick={handleClick}
+      className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600 focus:ring focus:ring-blue-300"
+    >
+      Generate
+    </button>
+  </div>
+</div>
 
+{loading ? (
+  <div className="text-center mt-8 text-gray-600 font-medium">Loading...</div>
+) : (
+  <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 animate-flip-up">
+    {response.map((fc, idx) => (
+      <Flashcard
+        key={idx}
+        question={fc.question}
+        answer={fc.answer}
+        flipped={flippedIndex === idx}
+        onFlip={() => setFlippedIndex(flippedIndex === idx ? null : idx)}
+      />
+    ))}
+  </div>
+)}
 
-    {loading ? (
-      <div className="text-center mt-6">Loading...</div>
-    ) : (
- 
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {response.map((fc, idx) => (
-          <Flashcard
-            key={idx}
-            quetion={fc.question}
-            answer={fc.answer}
-            fliped={flippedIndex === idx}
-            onFlip={() => setFlippedIndex(flippedIndex === idx ? null : idx)}
-          />
-        ))}
-      </div>
-    )}
   </div>
   )
 }

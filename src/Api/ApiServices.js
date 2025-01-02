@@ -7,7 +7,7 @@ export const aiRun = async (search) => {
   try {
     const prompt = `Create study flashcards on the topic: ${search}. Format each flashcard as 'Question:Answer'. 
     Use ':' only to separate the question from the answer. Do not include ':' anywhere else in the question or answer. 
-    Do not write prefixes like 'Question' or 'Answer' or any numbering. Include multiple questions and answers, each on a new line.`;
+    Do not write prefixes like 'Question' or 'Answer' or any numbering. Include multiple questions and answers, each on a new line. do not add extra  empty line `;
     
 
     const result = await model.generateContent(prompt);
