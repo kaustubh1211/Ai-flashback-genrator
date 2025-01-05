@@ -1,11 +1,11 @@
 import React from "react";
 
-const Flashcard = ({ question, answer, flipped, onFlip }) => {
+const Flashcard = ({ question, answer, flipped, onFlip, save ,del}) => {
   return (
-    <div className="relative w-64 h-40 perspective">
+    <div className="relative w-64 h-40 perspective ">
       <div>
         <div
-          className=" bg-white shadow-lg rounded-lg cursor-pointer flex items-center justify-center text-center transform transition-transform duration-500"
+          className=" bg-white shadow-lg rounded-lg cursor-pointer flex items-center justify-center text-center transform transition-transform duration-500 "
           onClick={onFlip}
         >
           <div
@@ -30,6 +30,24 @@ const Flashcard = ({ question, answer, flipped, onFlip }) => {
               </div>
             )}
           </div>
+        </div>
+        <div>
+          {
+            save?
+            <button
+            className="mt-1 bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition duration-300 w-full"
+            onClick={save}
+            >
+            Save Flashcard
+          </button>
+          :
+          <button
+          className="mt-1 bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition duration-300 w-full"
+          onClick={del}
+          >
+          Delete Flashcard
+        </button>
+          }
         </div>
       </div>
     </div>
